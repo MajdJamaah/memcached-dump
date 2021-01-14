@@ -26,8 +26,11 @@ data= output.split('\n')
 lista = {}
 for key  in data:
     if key != '':
-        lista[key]=s.get(key)
-        print "dumping "+key+"..."
+        try:
+            lista[key]=s.get(key)
+            print "dumping "+key+"..."
+        except:
+            print("An exception occurred")
 jsonfinal = json.dumps(lista, ensure_ascii=False)
 print "writing output..."
 fileWrite = open(out, "w")

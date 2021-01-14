@@ -24,8 +24,11 @@ c = open(out, 'r').read()
 try:
     decoded = json.loads(c)
     for key in decoded:
-        s.set(str(key),str(decoded[key]))
-        print "inserting  "+key+"..."
+        try:
+            s.set(str(key),str(decoded[key]))
+            print "inserting  "+key+"..."
+        except:
+            print "something went wrong"
 except (ValueError, KeyError, TypeError):
     print "JSON format error"
 print "restore finished"
